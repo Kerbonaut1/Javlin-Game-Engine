@@ -1,5 +1,8 @@
-#pragma once
+#ifndef ENGINESTRUCTS_H
+#define ENGINESTRUCTS_H
+
 #include <string>
+#include <vector>
 using namespace std;
 
 struct Vec2
@@ -30,3 +33,26 @@ string Vec4toString(Vec4 MyVec)
 	// returns a string representation of the Vec4
 	return "(X: " + to_string(MyVec.x) + " Y: " + to_string(MyVec.y) + " Z: " + to_string(MyVec.z) + " W: " + to_string(MyVec.w) + ")";
 }
+
+struct Vertex
+{
+	Vec3 Position;
+	Vec3 Normal;
+	Vec2 TexCoords;
+};
+
+struct Texture
+{
+	unsigned int id;
+	string type;
+	string path;
+};
+
+struct Model
+{
+	vector<Vertex> vertices;
+	vector<unsigned int> indices;
+	vector<Texture> textures;
+};
+
+#endif // ENGINESTRUCTS_H

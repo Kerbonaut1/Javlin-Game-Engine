@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENGINEINFO_H
+#define ENGINEINFO_H
 #include <string>
 #include <iostream>
 #include "EngineStructs.h"
@@ -12,7 +13,6 @@ string Engine_DistroAuthor = "Kerbonaut";
 string Engine_DistroDescription = "A game engine designed to be extendable and modifiyable";
 Vec3 Engine_DistroVersion = { 1.0f, 0.0f, 0.0f };
 
-
 // Function to print the Engine Info
 void PrintEngineBasicInfo()
 {
@@ -21,3 +21,5 @@ void PrintEngineBasicInfo()
 	cout << "Engine Version: " << Engine_DistroVersion.x << "." << Engine_DistroVersion.y << "." << Engine_DistroVersion.z << endl;
 	cout << "Engine Description: " << Engine_DistroDescription << endl;
 }
+
+#endif // !ENGINEINFO_H
