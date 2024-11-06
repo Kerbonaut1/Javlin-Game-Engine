@@ -53,21 +53,31 @@ int main()
 	PrintEngineBasicInfo();
 
 	// load a model
-	Model myModel = LoadObj("Assets/Ico.obj");
+	Model myModel = LoadOBJ("Assets/Ico.obj");
 
-	// print the model vertices
-	for (int i = 0; i < myModel.vertices.size(); i++)
-	{
-		cout << "Vertex " << i << " Position: " << myModel.vertices[i].Position.x << " " << myModel.vertices[i].Position.y << " " << myModel.vertices[i].Position.z << endl;
-		cout << "Vertex " << i << " Normal: " << myModel.vertices[i].Normal.x << " " << myModel.vertices[i].Normal.y << " " << myModel.vertices[i].Normal.z << endl;
-		cout << "Vertex " << i << " TexCoords: " << myModel.vertices[i].TexCoords.x << " " << myModel.vertices[i].TexCoords.y << endl;
-	}
+	glScalef(0.5f, 0.5f, 0.5f);
+	glTranslatef(0.0f, 0.0f, -1.0f);
+	
+	
 
 	// Loop until the user closes the window
 	while (!glfwWindowShouldClose(window))
 	{
 		// Render here
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		// rotate the model
+		glRotatef(0.1f, 1.0f, 0.0f, 0.0f);
+
+		// Draw the model
+		glBegin(GL_TRIANGLES);
+		for (int i = 0; i < myModel.vertices.size(); i++)
+		{
+			Vertex vertex = myModel.vertices[i];
+
+			glVertex3f(vertex.Position.x, vertex.Position.y, vertex.Position.z);
+		}
+		glEnd();
 
 		// Swap front and back buffers
 		glfwSwapBuffers(window);

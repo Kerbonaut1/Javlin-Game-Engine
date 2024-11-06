@@ -1,11 +1,14 @@
+#ifndef MODEL_LOADER_H
+#define MODEL_LOADER_H
 // using the engine struct and use tiny obj loader to load the model
+#define TINYOBJLOADER_IMPLEMENTATION
+#include <tiny_obj_loader.h>
+
 #include "EngineStructs.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <vector>
-#define TINYOBJLOADER_IMPLEMENTATION
-#include <tiny_obj_loader.h>
 using namespace std;
 
 
@@ -15,16 +18,17 @@ Model LoadOBJ(string path)
 	vector<Vertex> vertices;
 	vector<unsigned int> indices;
 	vector<Texture> textures;
-	string directory = path.substr(0, path.find_last_of('/'));
+
 	tinyobj::attrib_t attrib;
 	vector<tinyobj::shape_t> shapes;
 	vector<tinyobj::material_t> materials;
 	string warn, err;
-	if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, path.c_str(), directory.c_str()))
+
+	if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, path.c_str()))
 	{
-		cerr << warn << endl;
-		cerr << err << endl;
+		throw runtime_error(warn + err);
 	}
+
 	for (const auto& shape : shapes)
 	{
 		for (const auto& index : shape.mesh.indices)
@@ -37,8 +41,13 @@ Model LoadOBJ(string path)
 			indices.push_back(indices.size());
 		}
 	}
+
 	model.vertices = vertices;
 	model.indices = indices;
+	model.textures = textures;
+
 	return model;
 }
+
+#endif // !MODEL_LOADER_H
 
