@@ -11,7 +11,7 @@ using namespace std;
 string Engine_DistroName = "Javlin Game Engine";
 string Engine_DistroAuthor = "Kerbonaut";
 string Engine_DistroDescription = "A game engine designed to be extendable and modifiyable";
-Vec3 Engine_DistroVersion = { 1.0f, 0.0f, 0.0f };
+Vec3 Engine_DistroVersion = { 0.0f, 0.0f, 1.0f };
 
 // Function to print the Engine Info
 void PrintEngineBasicInfo()
