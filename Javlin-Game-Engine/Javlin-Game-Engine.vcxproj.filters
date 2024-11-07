@@ -24,9 +24,6 @@
     <ClCompile Include="Deps\Include\glm\detail\glm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Deps\Include\glm\glm.cppm">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Deps\Include\ImGUI\imgui.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -972,6 +969,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Deps\Include\ImGUI\imstb_truetype.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineModules\DeveloperWindow.cpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

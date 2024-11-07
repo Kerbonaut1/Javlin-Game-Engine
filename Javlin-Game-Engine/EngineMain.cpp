@@ -10,6 +10,7 @@
 #include "EngineModules/ModelLoader.h"
 #include "EngineModules/Textures.h"
 #include "EngineModules/Shader.h"
+#include "EngineModules/DeveloperWindow.cpp"
 #include "ApplicationInfo.h"
 
 
@@ -24,7 +25,7 @@
 #include "ImGUI/imgui_impl_opengl3.h"
 
 
-
+vector<string> ConsoleLog;
 
 int main()
 {
@@ -147,14 +148,17 @@ int main()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
+		/*
+		
 		ImGui::Begin("DBG window");
-
-
 		// draw the texture
         ImGui::Image((ImTextureID)(intptr_t)myTexture.id, ImVec2(200, 200));
-
-
 		ImGui::End();
+		*/
+
+		// console window
+		ConsoleWindow(Jwindow);
+
 
 		ImGui::Render();
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
